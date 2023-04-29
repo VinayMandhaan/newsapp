@@ -12,8 +12,11 @@ import { categoriesData, languageData } from "../../constants/data"
 const Home = () => {
     const dispatch = useDispatch()
     const news = useSelector(state => state.news.news)
+    const category = useSelector(state => state.news.selectedCategory)
+    const language = useSelector(state => state.news.selectedLanguage)
+
     useEffect(() => {
-        dispatch(getNews('bitcoin', 'en'))
+        dispatch(getNews(category, language))
     }, [])
 
     const renderCard = ({ item }) => {
@@ -25,12 +28,14 @@ const Home = () => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <View style={styles.dropDownContainer}>
+                <CustomDropDown data={categoriesData} action={selectCategory} placeholder={'Select Category'} />
+                <CustomDropDown data={languageData} action={selectLanguage} placeholder={'Select Language'} />
+            </View>
             <FlatList
                 data={news?.articles}
                 renderItem={renderCard}
             />
-            <CustomDropDown data={categoriesData} action={selectCategory} />
-            <CustomDropDown data={languageData} action={selectLanguage} />
         </SafeAreaView>
     )
 }
@@ -39,6 +44,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.primaryColor
+    },
+    dropDownContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        margin: 10,
+        zIndex: 1
     }
 })
 
