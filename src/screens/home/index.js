@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { View, Text, SafeAreaView, StyleSheet } from "react-native"
-import { useDispatch } from "react-redux"
+import { View, Text, SafeAreaView, StyleSheet, FlatList } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 import { getNews } from "../../actions/news"
 import { Colors } from "../../constants/styles"
 import NewsCard from "../../components/card"
@@ -9,22 +9,35 @@ import NewsCard from "../../components/card"
 
 const Home = () => {
     const dispatch = useDispatch()
+    const news = useSelector(state => state.news.news)
     useEffect(() => {
         dispatch(getNews('bitcoin', 'en'))
-    },[])
+    }, [])
+
+    console.log(news,'NEWS AYO')
+
+
+    const renderCard = ({ item }) => {
+        return (
+            <NewsCard title={item?.title} content={item?.content} source={item?.source?.name} image={item?.urlToImage} />
+        )
+    }
 
 
     return (
         <SafeAreaView style={styles.container}>
-            <NewsCard/>
+            <FlatList
+                data={news?.articles}
+                renderItem={renderCard}
+            />
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
-        backgroundColor:Colors.primaryColor
+        flex: 1,
+        backgroundColor: Colors.primaryColor
     }
 })
 

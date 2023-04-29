@@ -13,7 +13,6 @@ export const getNews = (param,lang) => async dispatch => {
                 language: lang
             }
         }).then((res) => {
-            console.log(res.data,'RES')
             dispatch({
                 type: GET_NEWS_SUCCESS,
                 payload: res.data

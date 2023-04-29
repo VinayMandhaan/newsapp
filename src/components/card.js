@@ -1,22 +1,25 @@
-import { VStack, Box, Divider } from 'native-base';
-
-import { View } from 'react-native';
+import { VStack, Box, Divider, Image } from 'native-base';
 
 
-const NewsCard = () => {
+const NewsCard = ({ title, content, source, image }) => {
     return (
         <Box border="1" borderRadius="md">
             <VStack space="4" divider={<Divider />}>
                 <Box px="4" pt="4">
-                    NativeBase
+                    {title}
                 </Box>
+                {
+                    image && (
+                        <Box px="4">
+                            <Image alignSelf={'center'} resizeMode='contain' borderRadius={20} style={{ height: 250, width: 250 }} alt='' source={{ uri: image }} />
+                        </Box>
+                    )
+                }
                 <Box px="4">
-                    NativeBase is a free and open source framework that enable developers
-                    to build high-quality mobile apps using React Native iOS and Android
-                    apps with a fusion of ES6.
+                    {content}
                 </Box>
                 <Box px="4" pb="4">
-                    GeekyAnts
+                    {source}
                 </Box>
             </VStack>
         </Box>

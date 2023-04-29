@@ -12,7 +12,6 @@ export default function App() {
   return (
     <Provider store={store}>
       <NativeBaseProvider>
-
         <Home />
       </NativeBaseProvider>
 
