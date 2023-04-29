@@ -14,12 +14,9 @@ const Home = () => {
         dispatch(getNews('bitcoin', 'en'))
     }, [])
 
-    console.log(news,'NEWS AYO')
-
-
     const renderCard = ({ item }) => {
         return (
-            <NewsCard title={item?.title} content={item?.content} source={item?.source?.name} image={item?.urlToImage} />
+            <NewsCard title={item?.title} content={item?.content} source={item?.source?.name} image={item?.urlToImage} url={item?.url} />
         )
     }
 

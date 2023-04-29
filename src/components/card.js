@@ -1,7 +1,9 @@
-import { VStack, Box, Divider, Image } from 'native-base';
+import { VStack, Box, Divider, Image, Link } from 'native-base';
+import { TouchableOpacity } from 'react-native';
+import { Colors } from '../constants/styles';
 
 
-const NewsCard = ({ title, content, source, image }) => {
+const NewsCard = ({ title, content, source, image, url }) => {
     return (
         <Box border="1" borderRadius="md">
             <VStack space="4" divider={<Divider />}>
@@ -16,10 +18,11 @@ const NewsCard = ({ title, content, source, image }) => {
                     )
                 }
                 <Box px="4">
-                    {content}
+                    {`${content?.slice(0,200)}...`}
                 </Box>
-                <Box px="4" pb="4">
+                <Box px="4" pb="4" borderBottomWidth={1}>
                     {source}
+                    <Link href={url} alignSelf={'center'} mt="2">Visit Full Article</Link>
                 </Box>
             </VStack>
         </Box>
