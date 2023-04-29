@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getNews } from '../actions/news';
 
 
-const CustomDropDown = ({ data, action, placeholder }) => {
+const CustomDropDown = ({ data, action, placeholder, selectedValue }) => {
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState(selectedValue);
     const [items, setItems] = useState(data);
 
     return (
