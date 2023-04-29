@@ -1,9 +1,11 @@
 import { useEffect } from "react"
 import { View, Text, SafeAreaView, StyleSheet, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { getNews } from "../../actions/news"
+import { getNews, selectCategory, selectLanguage } from "../../actions/news"
 import { Colors } from "../../constants/styles"
 import NewsCard from "../../components/card"
+import CustomDropDown from "../../components/dropdown"
+import { categoriesData, languageData } from "../../constants/data"
 
 
 
@@ -27,6 +29,8 @@ const Home = () => {
                 data={news?.articles}
                 renderItem={renderCard}
             />
+            <CustomDropDown data={categoriesData} action={selectCategory} />
+            <CustomDropDown data={languageData} action={selectLanguage} />
         </SafeAreaView>
     )
 }

@@ -1,8 +1,10 @@
-import { GET_NEWS_REQUEST, GET_NEWS_SUCCESS, GET_NEWS_FAILURE } from "../actions/types"
+import { GET_NEWS_REQUEST, GET_NEWS_SUCCESS, GET_NEWS_FAILURE, SELECT_CATEGORY_SUCCESS, SELECT_LANGUAGE_SUCCESS } from "../actions/types"
 
 const initalState = {
     loading: false,
-    news:[]
+    news:[],
+    selectedLanguage:'en',
+    selectedCategory:'apple'
 }
 
 
@@ -25,6 +27,18 @@ export default function (state = initalState, action) {
                 ...state,
                 loading:false,
                 news:[]
+            }
+        case SELECT_CATEGORY_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                selectedCategory:payload
+            }
+        case SELECT_LANGUAGE_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                selectedLanguage:payload
             }
         default:
             return state

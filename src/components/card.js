@@ -1,4 +1,4 @@
-import { VStack, Box, Divider, Image, Link } from 'native-base';
+import { VStack, Box, Divider, Image, Link, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import { Colors } from '../constants/styles';
 
@@ -8,7 +8,7 @@ const NewsCard = ({ title, content, source, image, url }) => {
         <Box border="1" borderRadius="md">
             <VStack space="4" divider={<Divider />}>
                 <Box px="4" pt="4">
-                    {title}
+                    <Text color={Colors.blackColor} fontWeight={'bold'} textAlign={'center'}>{title}</Text>
                 </Box>
                 {
                     image && (
