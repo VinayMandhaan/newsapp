@@ -2,33 +2,39 @@ export const categoriesData = [
     {
         id: 1,
         label: 'Apple',
-        value: 'apple'
+        value: 'apple',
+        selected:false
     },
     {
         id: 2,
-        label: 'meta',
-        value: 'Meta'
+        label: 'Meta',
+        value: 'meta',
+        selected:false
     },
     {
         id: 3,
         label: 'Netflix',
-        value: 'netflix'
+        value: 'netflix',
+        selected:false
     },
     {
         id: 4,
         label: 'Google',
-        value: 'google'
+        value: 'google',
+        selected:false
     },
     {
         id: 5,
         label: 'Twitter',
-        value: 'twitter'
+        value: 'twitter',
+        selected:false
 
     },
     {
         id: 6,
         label: 'Tesla',
-        value: 'tesla'
+        value: 'tesla',
+        selected:false
     }
 ]
 
