@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import api from "../utils/api"
-import { GET_NEWS_REQUEST, GET_NEWS_SUCCESS, GET_NEWS_FAILURE, SELECT_LANGUAGE_SUCCESS, SELECT_CATEGORY_SUCCESS, SELECT_CATEGORY_FAILURE, SELECT_LANGUAGE_FAILURE } from "./types"
+import { GET_NEWS_REQUEST, GET_NEWS_SUCCESS, GET_NEWS_FAILURE, SELECT_LANGUAGE_SUCCESS, SELECT_CATEGORY_SUCCESS, SELECT_CATEGORY_FAILURE, SELECT_LANGUAGE_FAILURE, CHANGE_THEME_SUCCESS } from "./types"
 import store from "../store"
 
 export const getNews = (param, lang) => async dispatch => {
@@ -57,5 +57,16 @@ export const selectLanguage = (language) => async dispatch => {
         dispatch({
             type: SELECT_LANGUAGE_FAILURE
         })
+    }
+}
+
+export const changeTheme = (theme) => async dispatch => {
+    try {
+        dispatch({
+            type: CHANGE_THEME_SUCCESS,
+            payload: theme
+        })
+    } catch (err) {
+        console.log(err)
     }
 }

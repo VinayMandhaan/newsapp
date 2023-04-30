@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { View, Text, SafeAreaView, StyleSheet, FlatList, Platform } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { getNews, selectCategory, selectLanguage } from "../../actions/news"
-import { Colors } from "../../constants/styles"
+import { Colors, darkTheme, lightTheme } from "../../constants/styles"
 import NewsCard from "../../components/card"
 import CustomDropDown from "../../components/dropdown"
 import { categoriesData, languageData } from "../../constants/data"
@@ -18,6 +18,11 @@ const Home = () => {
     const language = useSelector(state => state.news.selectedLanguage)
     const loading = useSelector(state => state.news.loading)
     const [categoryData, setCategoryData] = useState(categoriesData)
+    const darkMode = useSelector(state => state.news.darkMode)
+    const currentTheme = darkMode ? darkTheme : lightTheme
+
+    
+
 
     useEffect(() => {
         dispatch(getNews(category, language))
@@ -56,7 +61,9 @@ const Home = () => {
         )
     }
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, {
+            backgroundColor:currentTheme.backgroundColor
+        }]}>
             <FlatList
                 data={categoryData}
                 horizontal
@@ -77,7 +84,6 @@ const Home = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.primaryColor,
         marginTop: Platform.OS == 'android' ? 40 : 0
     },
     dropDownContainer: {
