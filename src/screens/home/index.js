@@ -78,6 +78,11 @@ const Home = () => {
             <FlatList
                 data={news?.articles}
                 renderItem={renderCard}
+                ListEmptyComponent={() => (
+                    <View>
+                        <Text>No Data Available</Text>
+                    </View>
+                )}
             />
         </SafeAreaView>
     )
