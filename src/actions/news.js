@@ -19,6 +19,10 @@ export const getNews = (param, lang) => async dispatch => {
                 type: GET_NEWS_SUCCESS,
                 payload: res.data
             })
+        }).catch((err) => {
+            dispatch({
+                type: GET_NEWS_FAILURE
+            })
         })
     } catch (err) {
         console.log(err)
