@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { currentBaseUrl } from './baseUrl';
 
 const api = axios.create({
     baseURL: 'https://newsapp-server.vercel.app/news',
