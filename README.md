@@ -18,3 +18,12 @@ https://newsapp-server.vercel.app/
 
 ### Backend Repository
 https://github.com/VinayMandhaan/newsapp-server
+
+
+### Demo
+
+* iOS
+
+
+https://user-images.githubusercontent.com/40740604/235367764-6df9b1bd-112b-4bb8-a77f-773510c755c1.mp4
+
