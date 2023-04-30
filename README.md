@@ -28,3 +28,6 @@ https://user-images.githubusercontent.com/40740604/235367764-6df9b1bd-112b-4bb8-
 * Android
 https://user-images.githubusercontent.com/40740604/235368981-c4761643-a78b-4eaf-9a03-bd5900cc4721.mp4
 
+* Web
+https://user-images.githubusercontent.com/40740604/235369220-21ef307d-b6be-42a0-bd86-cc23b831d971.mp4
+
