@@ -8,10 +8,16 @@ export const Colors = {
 
 export const lightTheme = {
     backgroundColor: Colors.primaryColor,
+    btnColor:Colors.blackColor,
     color: Colors.blackColor,
+    btnTxt:Colors.whiteColor,
+    selectedColor:Colors.goldColor
 };
 
 export const darkTheme = {
     backgroundColor: Colors.blackColor,
+    btnColor:Colors.whiteColor,
     color: Colors.whiteColor,
+    btnTxt:Colors.blackColor,
+    selectedColor:Colors.goldColor
 };

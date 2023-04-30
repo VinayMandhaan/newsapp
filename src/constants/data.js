@@ -77,3 +77,16 @@ export const languageData = [
     }
 ]
 
+export const themeData = [
+    {
+        id:1,
+        label:'Dark',
+        value:'dark'
+    },
+    {
+        id:2,
+        label:'Light',
+        value:'light'
+    },
+]
+

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { View, Text, SafeAreaView, StyleSheet, FlatList, Platform } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { getNews, selectCategory, selectLanguage } from "../../actions/news"
+import { changeTheme, getNews, selectCategory, selectLanguage } from "../../actions/news"
 import { Colors, darkTheme, lightTheme } from "../../constants/styles"
 import NewsCard from "../../components/card"
 import CustomDropDown from "../../components/dropdown"
-import { categoriesData, languageData } from "../../constants/data"
+import { categoriesData, languageData, themeData } from "../../constants/data"
 import Loader from "../../components/loader"
 import Button from "../../components/button"
+import { Switch } from "native-base"
 
 
 
@@ -17,11 +18,11 @@ const Home = () => {
     const category = useSelector(state => state.news.selectedCategory)
     const language = useSelector(state => state.news.selectedLanguage)
     const loading = useSelector(state => state.news.loading)
+    const theme = useSelector(state => state.news.currentTheme)
     const [categoryData, setCategoryData] = useState(categoriesData)
-    const darkMode = useSelector(state => state.news.darkMode)
-    const currentTheme = darkMode ? darkTheme : lightTheme
+    const currentTheme = theme == 'light' ? lightTheme : darkTheme
 
-    
+
 
 
     useEffect(() => {
@@ -62,7 +63,7 @@ const Home = () => {
     }
     return (
         <SafeAreaView style={[styles.container, {
-            backgroundColor:currentTheme.backgroundColor
+            backgroundColor: currentTheme.backgroundColor
         }]}>
             <FlatList
                 data={categoryData}
@@ -72,6 +73,7 @@ const Home = () => {
             />
             <View style={styles.dropDownContainer}>
                 <CustomDropDown data={languageData} action={selectLanguage} placeholder={'Select Language'} selectedValue={language} />
+                <CustomDropDown data={themeData} action={changeTheme} placeholder={'Select Language'} selectedValue={theme} />
             </View>
             <FlatList
                 data={news?.articles}

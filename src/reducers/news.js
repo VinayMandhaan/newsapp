@@ -5,7 +5,7 @@ const initalState = {
     news:[],
     selectedLanguage:'en',
     selectedCategory:'apple',
-    darkMode:false
+    currentTheme:'light'
 }
 
 
