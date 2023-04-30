@@ -11,8 +11,8 @@ export const getNews = (param, lang) => async dispatch => {
         api({
             method: 'GET',
             params: {
-                q: param,
-                language: lang
+                query: param,
+                lang: lang
             }
         }).then((res) => {
             dispatch({
