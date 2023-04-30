@@ -23,6 +23,18 @@ const Home = () => {
         dispatch(getNews(category, language))
     }, [])
 
+    const onPressBtn = (id) => {
+        var catData = [...categoryData]
+        catData.map(val => {
+            if (val.id == id) {
+                val.selected = !val.selected
+            }
+        })
+        setCategoryData(catData)
+        const selectedData = catData.filter(item => item.selected).map(item => item.value).join(" AND ");
+        dispatch(selectCategory(selectedData))
+    }
+
     const renderCard = ({ item }) => {
         return (
             <NewsCard title={item?.title} content={item?.content} source={item?.source?.name} image={item?.urlToImage} url={item?.url} />
@@ -32,15 +44,7 @@ const Home = () => {
     const renderButton = ({ item }) => {
         return (
             <View style={styles.btnContainer}>
-                <Button item={item} onSelectBtn={(id) => {
-                    var catData = [...categoryData]
-                    catData.map(val => {
-                        if(val.id == id){
-                            val.selected = !val.selected
-                        }
-                    })
-                    setCategoryData(catData)
-                }} />
+                <Button item={item} onSelectBtn={(id) => onPressBtn(id)} />
             </View>
         )
     }
@@ -54,7 +58,7 @@ const Home = () => {
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
-                data={categoriesData}
+                data={categoryData}
                 horizontal
                 renderItem={renderButton}
                 style={{ marginBottom: 10 }}
